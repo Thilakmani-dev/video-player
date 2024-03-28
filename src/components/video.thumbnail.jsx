@@ -4,8 +4,13 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import "./video.thumbnail.css";
 
-const VideoThumbnail = (props) => {
-  const { videoInfo } = props;
+export const VIDEO_THUMBNAIL_TYPES = {
+  SQUARE: "square",
+  RECTANGLE: "rectangle",
+};
+
+export const VideoThumbnail = (props) => {
+  const { videoInfo, type } = props;
   const { thumb, title, description } = videoInfo;
 
   useEffect(function manageEventHandlers() {
@@ -33,18 +38,25 @@ const VideoThumbnail = (props) => {
   return (
     <Link to="/play" state={{ videoInfo: videoInfo }}>
       <div
-        className="w-full h-60 max-h-60 flex flex-col p-2 bg-white hover:bg-slate-300 rounded-lg draggable cursor-move"
+        className={
+          type === VIDEO_THUMBNAIL_TYPES.RECTANGLE
+            ? "flex gap-4 items-center bg-slate-200 p-2 border-[1px] border-gray-500 rounded-lg hover:bg-blue-400 hover:text-white"
+            : "w-full h-60 max-h-60 flex flex-col p-2 bg-white hover:bg-slate-300 rounded-lg draggable cursor-move"
+        }
         draggable
       >
         <img
-          className="w-full h-full object-fill cursor-pointer"
+          className={
+            type === VIDEO_THUMBNAIL_TYPES.RECTANGLE
+              ? "w-[25%] rounded-lg"
+              : "w-full h-full object-fill cursor-pointer rounded-lg"
+          }
           src={getImageURL(thumb)}
           alt={title}
           draggable={false}
         />
         <div>
-          <h3 className="font-bold">{title}</h3>
-          <p className="truncate">{description}</p>
+          <h3 className="text-lg">{title}</h3>
         </div>
       </div>
     </Link>
@@ -53,6 +65,5 @@ const VideoThumbnail = (props) => {
 
 VideoThumbnail.propTypes = {
   videoInfo: PropTypes.object,
+  type: PropTypes.string,
 };
-
-export default VideoThumbnail;

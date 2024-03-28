@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
 
-import VideoThumbnail from "./video.thumbnail";
+import { VideoThumbnail } from "./video.thumbnail";
 
 const Playlist = (props) => {
   const { title, videos, description, total } = props;
   return (
-    <div className="grid grid-cols-[300px_minmax(900px,_1fr)_100px] p-2">
+    <div className="grid grid-cols-[1fr,5fr] grid-rows-1 p-2">
       <div>
         <h3>{title}</h3>
         <p>{description}</p>
