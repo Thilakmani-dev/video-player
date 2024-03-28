@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import "./video.thumbnail.css";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const VIDEO_THUMBNAIL_TYPES = {
   SQUARE: "square",
   RECTANGLE: "rectangle",
@@ -11,7 +12,7 @@ export const VIDEO_THUMBNAIL_TYPES = {
 
 export const VideoThumbnail = (props) => {
   const { videoInfo, type } = props;
-  const { thumb, title, description } = videoInfo;
+  const { thumb, title } = videoInfo;
 
   useEffect(function manageEventHandlers() {
     const draggableElements = document.querySelectorAll(".draggable");
