@@ -1,13 +1,16 @@
 import PropTypes from "prop-types";
+import { useLocation } from "react-router-dom";
 
-const VideoPlayer = (props) => {
-  const { isControllable, data } = props;
-  return <video controls src={data[0].sources[0]} />;
+const VideoPlayer = () => {
+  let data = useLocation();
+  let videoInfo = data.state.videoInfo;
+  return <video controls src={videoInfo.sources[0]} />;
 };
 
 VideoPlayer.propTypes = {
   isControllable: PropTypes.bool,
   data: PropTypes.arrayOf(Object),
+  location: PropTypes.object,
 };
 
 export default VideoPlayer;
