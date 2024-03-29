@@ -1,9 +1,11 @@
-import PropTypes from "prop-types";
+import { useLocation } from "react-router-dom";
 
 import { VideoThumbnail } from "./video.thumbnail";
 
-const Playlist = (props) => {
-  const { title, videos, description, total } = props;
+const Playlist = () => {
+  const playlistState = useLocation();
+  const playlistInfo = playlistState.state.playlistInfo;
+  const { title, description, total, videos } = playlistInfo;
   return (
     <div className="grid grid-cols-[1fr,5fr] grid-rows-1 p-2">
       <div>
@@ -13,21 +15,13 @@ const Playlist = (props) => {
       </div>
       {videos && (
         <div className="grid grid-cols-4 gap-4 bg-slate-100 p-2">
-          {videos.map((videoInfo) => {
-            console.log("video", videoInfo);
-            return <VideoThumbnail key={videoInfo.id} videoInfo={videoInfo} />;
-          })}
+          {videos.map((videoInfo) => (
+            <VideoThumbnail key={videoInfo.id} videoInfo={videoInfo} />
+          ))}
         </div>
       )}
     </div>
   );
-};
-
-Playlist.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  total: PropTypes.number,
-  videos: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default Playlist;

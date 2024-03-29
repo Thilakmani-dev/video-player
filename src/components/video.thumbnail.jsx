@@ -1,18 +1,16 @@
-import PropTypes from "prop-types";
-import { getImageURL } from "../utils/index";
-import { Link } from "react-router-dom";
+/* eslint-disable react-refresh/only-export-components */
 import { useEffect } from "react";
-import "./video.thumbnail.css";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
-// eslint-disable-next-line react-refresh/only-export-components
-export const VIDEO_THUMBNAIL_TYPES = {
-  SQUARE: "square",
-  RECTANGLE: "rectangle",
-};
+import { getImageURL } from "../utils/index";
+import { VIDEO_THUMBNAIL_TYPES } from "../utils/constants";
+
+import "./video.thumbnail.css";
 
 export const VideoThumbnail = (props) => {
   const { videoInfo, type } = props;
-  const { thumb, title } = videoInfo;
+  const { thumb, title, id: videoId } = videoInfo;
 
   useEffect(function manageEventHandlers() {
     const draggableElements = document.querySelectorAll(".draggable");
@@ -37,7 +35,7 @@ export const VideoThumbnail = (props) => {
   }, []);
 
   return (
-    <Link to="/play" state={{ videoInfo: videoInfo }}>
+    <Link to={`/video/${videoId}`} state={{ videoInfo: videoInfo }}>
       <div
         className={
           type === VIDEO_THUMBNAIL_TYPES.RECTANGLE

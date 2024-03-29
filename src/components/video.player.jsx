@@ -1,11 +1,15 @@
 import PropTypes from "prop-types";
 import { useLocation } from "react-router-dom";
+
+import { VideoThumbnail } from "./video.thumbnail";
+
+import { VIDEO_THUMBNAIL_TYPES } from "../utils/constants";
+
 import Videos from "../videos.json";
-import { VideoThumbnail, VIDEO_THUMBNAIL_TYPES } from "./video.thumbnail";
 
 const VideoPlayer = () => {
-  let data = useLocation();
-  let videoInfo = data.state.videoInfo;
+  const data = useLocation();
+  const videoInfo = data.state.videoInfo;
   return (
     <div className="w-full h-screen bg-slate-200 p-8">
       <div className="w-full h-full grid sm:grid-cols-1 md:grid-cols-[5fr,2fr] gap-4 p-2 pt-8">
@@ -32,22 +36,19 @@ function PlaylistVideos(props) {
       <p className="font-medium text-sm">
         {videos.playlists[0].videos.length} Videos
       </p>
-      {videos.playlists[0].videos.map((videoInfo) => {
-        console.log("video", videoInfo);
-        return (
-          <VideoThumbnail
-            key={videoInfo.id}
-            videoInfo={videoInfo}
-            type={VIDEO_THUMBNAIL_TYPES.RECTANGLE}
-          />
-        );
-      })}
+      {videos.playlists[0].videos.map((videoInfo) => (
+        <VideoThumbnail
+          key={videoInfo.id}
+          videoInfo={videoInfo}
+          type={VIDEO_THUMBNAIL_TYPES.RECTANGLE}
+        />
+      ))}
     </div>
   );
 }
 
 PlaylistVideos.propTypes = {
-  videos: PropTypes.arrayOf(Object),
+  videos: PropTypes.array,
 };
 
 VideoPlayer.propTypes = {

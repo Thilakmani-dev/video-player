@@ -1,25 +1,28 @@
+import { createContext, useState } from "react";
 import { Route, Routes } from "react-router-dom";
+
 import Playlist from "./components/playlist";
 import VideoPlayer from "./components/video.player";
+import Home from "./components/home";
 import PlaylistData from "./videos.json";
 
+export const PlaylistContext = createContext("playlists");
+
 function App() {
-  const { title, videos, description, total } = PlaylistData.playlists[0];
+  const [playlists, setPlaylists] = useState(PlaylistData.playlists);
+
+  function updatePlaylist(playlistId, data) {
+    setPlaylists((prev) => ({ ...prev, playlistId: data }));
+  }
+
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <Playlist
-            title={title}
-            videos={videos}
-            description={description}
-            total={total}
-          />
-        }
-      />
-      <Route path="/play" element={<VideoPlayer />} />
-    </Routes>
+    <PlaylistContext.Provider value={{ playlists, updatePlaylist }}>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/playlist/:id" element={<Playlist />} />
+        <Route path="/video/:id" element={<VideoPlayer />} />
+      </Routes>
+    </PlaylistContext.Provider>
   );
 }
 
