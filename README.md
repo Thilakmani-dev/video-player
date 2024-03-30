@@ -4,8 +4,9 @@ Welcome to Video player app, here user can change the order of videos in playlis
 
 ## Features
 
-- Play the video
-- Play next video in same playlist
+- Play the video in normal view, fullscreen, PIP
+- Manage playlists
+- Play next video in same playlist, auto play when current video stops
 - Change the order of videos in playlist by drag and drop the video
 - Search for specific video across all playlist and can play the video
 - Mobile Responsive
