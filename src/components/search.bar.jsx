@@ -1,9 +1,9 @@
 import { useContext, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { RiSearchLine } from "react-icons/ri";
 import { FaVideo } from "react-icons/fa";
 
 import { PlaylistContext } from "../App";
-import { Link } from "react-router-dom";
 
 const SearchBar = () => {
   const { playlists, updateSearchResults } = useContext(PlaylistContext);

@@ -39,7 +39,6 @@ const Home = () => {
                       <p>View all</p>
                       <RiPlayCircleLine />
                     </div>
-                    {/* <p className="text-sm">View full playlist</p> */}
                   </div>
                 </div>
               </Link>

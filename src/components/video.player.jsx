@@ -72,8 +72,8 @@ const VideoPlayer = () => {
 
   return (
     <div className="w-full h-[90%] max-height-[90%] overflow-y-hidden bg-slate-200 p-4 mt-10">
-      <div className="w-full h-full grid sm:grid-cols-1 md:grid-cols-[5fr,2fr] gap-4 p-2 pt-8">
-        <div className="sm:h-full md:h-[90%] bg-white rounded-lg p-2">
+      <div className="w-full h-full md:h-full sm:flex md:grid sm:flex-col md:grid-cols-[5fr,2fr] gap-4 p-2 pt-8">
+        <div className="sm:h-[70%] md:h-[90%] bg-white rounded-lg p-2">
           <video
             controls
             src={videoInfo.sources[0]}
@@ -106,7 +106,7 @@ const VideoPlayer = () => {
 function PlaylistVideos(props) {
   const { videos = [], playlistTitle, playlistId } = props;
   return (
-    <section className="sm:h-auto md:max-h-[90%] overflow-y-scroll bg-white rounded-lg p-2 px-2 gap-2 md:videoPlaylists">
+    <section className="sm:h-[100%] md:h-[90%] md:max-h-[90%] overflow-y-scroll bg-white rounded-lg p-2 px-2 gap-2 md:videoPlaylists">
       <p className="font-medium text-xl flex items-center gap-2">
         <RiPlayList2Fill />
         <span>{playlistTitle}</span>
