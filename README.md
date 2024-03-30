@@ -31,3 +31,5 @@ npm install
 
 npm run dev
 ```
+
+## [Hosted URL](https://video-player-fawn.vercel.app/)
