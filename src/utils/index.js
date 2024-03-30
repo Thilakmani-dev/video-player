@@ -3,7 +3,6 @@ export function getImageURL(fileName) {
 }
 
 export function findPlaylist(playlistId, playlists = []) {
-  console.log("playlists", playlists);
   if (playlists.length === 0) return;
   return playlists.find((playlist) => playlist.id === playlistId);
 }

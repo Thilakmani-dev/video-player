@@ -10,12 +10,16 @@ export const VideoThumbnail = (props) => {
     videoInfo,
     type = VIDEO_THUMBNAIL_TYPES.SQUARE,
     fileIndex = 0,
+    playlistId,
   } = props;
   const { thumb, title, id: videoId } = videoInfo;
 
   if (type === VIDEO_THUMBNAIL_TYPES.RECTANGLE) {
     return (
-      <Link to={`/video/${videoId}`} state={{ videoInfo: videoInfo }}>
+      <Link
+        to={`/video/${videoId}`}
+        state={{ videoInfo: videoInfo, playlistId }}
+      >
         <div className="flex gap-4 items-center bg-slate-100 p-2 border-[1px] border-gray-500 rounded-lg hover:bg-blue-300">
           <img
             className="w-[25%] rounded-lg"
@@ -23,13 +27,13 @@ export const VideoThumbnail = (props) => {
             alt={title}
             draggable={false}
           />
-          <h3 className="text-lg pt-2 truncate">{title}</h3>
+          <h3 className="text-lg truncate">{title}</h3>
         </div>
       </Link>
     );
   }
   return (
-    <Link to={`/video/${videoId}`} state={{ videoInfo: videoInfo }}>
+    <Link to={`/video/${videoId}`} state={{ videoInfo: videoInfo, playlistId }}>
       <div
         className="w-full sm:h-auto sm:max-h-80 md:h-60 md:max-h-60 flex flex-col p-2 bg-white hover:bg-blue-300 rounded-lg draggable cursor-move"
         draggable
@@ -54,5 +58,6 @@ export const VideoThumbnail = (props) => {
 VideoThumbnail.propTypes = {
   videoInfo: PropTypes.object,
   type: PropTypes.string,
-  fileIndex: PropTypes.string,
+  fileIndex: PropTypes.number,
+  playlistId: PropTypes.string,
 };

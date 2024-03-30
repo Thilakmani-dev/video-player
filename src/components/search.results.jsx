@@ -10,7 +10,6 @@ const SearchResults = () => {
   const dialog = document.getElementById("searchResultsModal");
 
   function dialogCloseHandler(e) {
-    console.log("e", e.target, e.currentTarget);
     if (e.currentTarget.id === "searchResultsModal")
       dialog.style.display = "none";
   }
@@ -26,8 +25,7 @@ const SearchResults = () => {
           {searchResults
             .filter((item) => item.thumb)
             .map((searchResult) => {
-              console.log("result", searchResult);
-              const { type, id, title = "" } = searchResult;
+              const { type, id, title = "", playlistId = "" } = searchResult;
               return (
                 <Link
                   key={id}
@@ -35,16 +33,17 @@ const SearchResults = () => {
                   state={{
                     [type === "playlist" ? "playlistInfo" : "videoInfo"]:
                       searchResult,
+                    playlistId: type === "playlist" ? id : playlistId,
                   }}
                   className="flex w-[80%] my-2 mx-2 gap-4 items-center bg-white p-2 border-[1px] border-gray-500 rounded-lg hover:bg-blue-300"
                 >
                   <li className="flex items-center gap-2">
-                    {title}
                     {type === "playlist" ? (
                       <RiPlayList2Fill />
                     ) : (
                       <RiFileVideoFill />
                     )}
+                    {title}
                   </li>
                 </Link>
               );

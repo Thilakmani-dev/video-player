@@ -22,14 +22,10 @@ const Playlist = () => {
     const draggableElements = document.querySelectorAll(".draggable");
     draggableElements.forEach((draggableElement, key) => {
       draggableElement.addEventListener("dragstart", () => {
-        console.log("dragging start index", key);
-
         draggingVideoRef.current = key;
         draggableElement.classList.add("isDragging");
       });
       draggableElement.addEventListener("dragenter", () => {
-        console.log("dragging enter index", key);
-
         hoveringVideoRef.current = key;
       });
       draggableElement.addEventListener("dragover", (e) => {
@@ -66,7 +62,7 @@ const Playlist = () => {
 
   function playVideo() {
     navigate(`/video/${currentPlaylist.videos[0].id}`, {
-      state: { videoInfo: currentPlaylist.videos[0] },
+      state: { videoInfo: currentPlaylist.videos[0], playlistId },
     });
   }
 
@@ -99,6 +95,7 @@ const Playlist = () => {
               key={videoInfo.id}
               videoInfo={videoInfo}
               fileIndex={index}
+              playlistId={playlistId}
             />
           ))}
         </section>

@@ -22,19 +22,18 @@ const SearchBar = () => {
         dialog.style.display = "none";
         return () => {};
       }
-      let foundPlaylists = playlists?.filter((playlist) =>
-        playlist.title.toLowerCase().includes(searchText.toLowerCase())
-      );
       let foundVideos = [];
       playlists?.forEach((playlist) => {
         foundVideos.push(
-          ...playlist.videos.filter((video) =>
-            video.title.toLowerCase().includes(searchText.toLowerCase())
-          )
+          ...playlist.videos
+            .map((video) => ({ ...video, playlistId: playlist.id }))
+            .filter((video) =>
+              video.title.toLowerCase().includes(searchText.toLowerCase())
+            )
         );
       });
       dialog.style.display = "flex";
-      updateSearchResults([...foundPlaylists, ...foundVideos]);
+      updateSearchResults([...foundVideos]);
     },
     [searchText]
   );
@@ -48,7 +47,7 @@ const SearchBar = () => {
         <RiSearchLine />
         <input
           type=""
-          placeholder="Search playlists & Videos"
+          placeholder="Search videos"
           className="w-full rounded-lg p-1 focus:outline-none"
           value={searchText}
           onChange={updateSearchText}

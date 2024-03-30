@@ -22,3 +22,7 @@
 /* input:focus-visible {
   border: none;
 } */
+
+.videoPlaylists {
+  height: fit-content;
+}
