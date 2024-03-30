@@ -1,8 +1,33 @@
-# React + Vite
+# Video Player and Playlists
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to Video player app, here user can change the order of videos in playlists and manage playlists, and play video in playlists
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Play the video
+- Play next video in same playlist
+- Change the order of videos in playlist by drag and drop the video
+- Search for specific video across all playlist and can play the video
+- Mobile Responsive
+
+## Installation
+
+To get started, follow these steps:
+
+1. Clone this repository to your local machine:
+
+2. Move to Directory
+
+3. Install all dependencies
+
+4. Run App in Local
+
+```bash
+git clone <repository-url>
+
+cd video-player
+
+npm install
+
+npm run dev
+```
