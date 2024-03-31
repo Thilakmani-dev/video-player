@@ -9,7 +9,7 @@ import { getImageURL } from "../utils";
 const Home = () => {
   const { playlists } = useContext(PlaylistContext);
   return (
-    <div className="my-8 mt-20 py-2 px-4">
+    <main className="my-8 mt-20 py-2 px-4">
       <p className="my-2 flex items-center gap-2">
         <RiPlayList2Fill />
         <span>Playlists</span>
@@ -46,7 +46,7 @@ const Home = () => {
           })}
         </div>
       )}
-    </div>
+    </main>
   );
 };
 

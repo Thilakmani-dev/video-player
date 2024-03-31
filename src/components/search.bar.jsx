@@ -39,7 +39,7 @@ const SearchBar = () => {
   );
 
   return (
-    <div className="searchBar w-full grid grid-cols-[1fr,8fr] justify-center mt-5 px-5">
+    <header className="searchBar w-full grid grid-cols-[1fr,8fr] gap-1 justify-center mt-5 px-5">
       <Link to="/" className="m-auto">
         <FaVideo className="w-[50px] h-[50px]" />
       </Link>
@@ -53,7 +53,7 @@ const SearchBar = () => {
           onChange={updateSearchText}
         />
       </div>
-    </div>
+    </header>
   );
 };
 
