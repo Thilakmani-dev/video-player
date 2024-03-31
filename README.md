@@ -34,3 +34,5 @@ npm run dev
 ```
 
 ## [Hosted URL](https://video-player-fawn.vercel.app/)
+
+## [PERFORMANCE REPORT](https://pagespeed.web.dev/analysis/https-video-player-fawn-vercel-app/q7w6zl41qp?form_factor=desktop)
