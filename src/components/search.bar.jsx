@@ -40,7 +40,7 @@ const SearchBar = () => {
 
   return (
     <header className="searchBar w-full grid grid-cols-[1fr,8fr] gap-1 justify-center mt-5 px-5">
-      <Link to="/" className="m-auto">
+      <Link to="/" className="m-auto" aria-label="Go to HomePage">
         <FaVideo className="w-[50px] h-[50px]" />
       </Link>
       <div className="w-full justify-center flex items-center gap-2 p-1 rounded-lg bg-white focus:border-blue-400">
